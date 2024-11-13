@@ -1,15 +1,8 @@
-import os
+import sqlalchemy as sa
+import sqlalchemy.orm as so
+from src import app, db
+from src.models import User, Post
 
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from src import app
-
-# app = Flask(__name__)
-
-# db_uri = os.environ.get('DATABASE_URI')
-# app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-# db = SQLAlchemy(app)
-
-
-# if __name__ == '__main__':
-#     app.run()
+@app.shell_context_processor
+def make_shell_context():
+    return {'sa': sa, 'so': so, 'db': db, 'User': User, 'Post': Post}
