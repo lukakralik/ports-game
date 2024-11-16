@@ -164,4 +164,4 @@ notes.md
 bin/
 include/
 lib/
-lib64/
+lib*
