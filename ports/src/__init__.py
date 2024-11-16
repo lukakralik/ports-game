@@ -8,6 +8,8 @@ app = Flask(__name__)
 login = LoginManager(app)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-migrate = Migrate(app, db) # creates SQL from app models
+migrate = Migrate(app, db)
+login = LoginManager(app)
+login.login_view='login' # url_for()
 
-from src import routes, models # doesnt exist yet
+from src import routes, models
