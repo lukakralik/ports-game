@@ -28,7 +28,7 @@ class RegistrationForm(FlaskForm):
 
     def validate_email(self, email):
         user = db.session.scalar(sa.select(User).where(
-            User.username == email.data
+            User.email == email.data
         ))
         if user is not None:
             raise ValidationError("This email is already in use!")

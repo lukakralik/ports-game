@@ -1,6 +1,6 @@
 from src import app, db
 from src.forms import LoginForm, RegistrationForm
-from src.models import User
+from src.models import User, Post
 import sqlalchemy as sa
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
@@ -59,5 +59,15 @@ def register():
         flash("Congrats you are now registered")
         return redirect(url_for("login"))
     return render_template("register.html", title="Register", form=form)
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html', user=user, posts=posts)
 
 # view function mapped onto urls / and /index
