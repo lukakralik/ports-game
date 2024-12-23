@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 import sqlalchemy as sa
 from src import db
 from src.models import User
@@ -32,3 +32,15 @@ class RegistrationForm(FlaskForm):
         ))
         if user is not None:
             raise ValidationError("This email is already in use!")
+
+class EditProfileForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    submit = SubmitField("Submit")
+
+    def validate_username(self, username):
+        user = db.session.scalar(sa.select(User).where(
+            User.username == username.data
+        ))
+        if user is not None:
+            raise ValidationError("This username is already taken!")

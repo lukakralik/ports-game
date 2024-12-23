@@ -12,4 +12,4 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view='login' # url_for()
 
-from src import routes, models
+from src import routes, models, errors
