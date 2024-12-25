@@ -1,9 +1,11 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 import sqlalchemy as sa
+from flask_wtf import FlaskForm
+from wtforms import BooleanField, PasswordField, StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
+
 from src import db
 from src.models import User
+
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -39,7 +41,7 @@ class EditProfileForm(FlaskForm):
     submit = SubmitField("Submit")
 
     def __init__(self, original_username, *args, **kwargs):
-        super.__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.original_username = original_username
 
 

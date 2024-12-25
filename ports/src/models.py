@@ -1,12 +1,13 @@
-from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timezone
+from hashlib import md5
 from typing import Optional
+
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from flask_login import UserMixin
-from src import db
-from src import login
-from hashlib import md5
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from src import db, login
 
 followers = sa.Table(
     'followers',

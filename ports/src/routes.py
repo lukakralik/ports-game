@@ -1,11 +1,14 @@
-from src import app, db
-from src.forms import LoginForm, RegistrationForm, EditProfileForm
-from src.models import User, Post
-import sqlalchemy as sa
-from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required
-from urllib.parse import urlsplit
 from datetime import datetime, timezone
+from urllib.parse import urlsplit
+
+import sqlalchemy as sa
+from flask import flash, redirect, render_template, request, url_for
+from flask_login import current_user, login_required, login_user, logout_user
+
+from src import app, db
+from src.forms import EditProfileForm, LoginForm, RegistrationForm
+from src.models import User
+
 
 @app.route('/')
 @app.route('/index')

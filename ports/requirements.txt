@@ -3,6 +3,5 @@ flask_sqlalchemy
 flask_login
 flask-wtf
 flask-migrate
-psycopg2
 python-dotenv
 email-validator

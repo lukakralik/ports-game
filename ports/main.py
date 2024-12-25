@@ -1,7 +1,9 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as so
+
 from src import app, db
-from src.models import User, Post
+from src.models import Post, User
+
 
 @app.shell_context_processor
 def make_shell_context():

@@ -1,11 +1,13 @@
-from flask import Flask
-from config import Config
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager
 import logging
-from logging.handlers import RotatingFileHandler
 import os
+from logging.handlers import RotatingFileHandler
+
+from flask import Flask
+from flask_login import LoginManager
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+
+from config import Config
 
 app = Flask(__name__)
 login = LoginManager(app)
@@ -29,4 +31,4 @@ if not app.debug:
     app.logger.info('Ports game')
 
 
-from src import routes, models, errors
+from src import errors, models, routes
