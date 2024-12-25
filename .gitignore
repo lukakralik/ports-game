@@ -165,3 +165,4 @@ bin/
 include/
 lib/
 lib*
+app.db
