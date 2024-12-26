@@ -6,7 +6,7 @@ from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from src import app, db
-from src.forms import EditProfileForm, LoginForm, RegistrationForm
+from src.forms import EditProfileForm, NewPortForm, NewCrewForm, RegistrationForm
 from src.models import User
 
 
@@ -26,24 +26,6 @@ def index():
     ]
 
     return render_template('index.html', title='Home', posts=posts)
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = db.session.scalar(
-            sa.select(User).where(User.username == form.username.data))
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or urlsplit(next_page).netloc != "":
-            next_page = url_for("index")
-        return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/logout')
 def logout():
@@ -96,5 +78,28 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template("edit_profile.html", title="Edit profile", form=form)
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    # if form.validate_on_submit():
+    #     current_user.username = form.username.data
+    #     current_user.about_me = form.about_me.data
+    #     db.session.commit()
+    #     flash("Changes have been saved!")
+    #     return redirect(url_for("edit_profile"))
+
+    # elif request.method == "GET":
+    #     form.username.data = current_user.username
+    #     form.about_me.data = current_user.about_me
+    return render_template("admin/admin.html", title="Admin")
+
+@app.route('/admin/new_port')
+def new_port():
+    form = NewPortForm()
+    return render_template('admin/new_port.html', form=form)
+
+@app.route('/admin/new_crew')
+def new_crew():
+    return render_template('admin/new_crew.html')
 
 # view function mapped onto urls / and /index

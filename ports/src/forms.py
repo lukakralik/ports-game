@@ -1,17 +1,25 @@
 import sqlalchemy as sa
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, PasswordField, StringField, SubmitField, TextAreaField
+from wtforms import BooleanField, PasswordField, StringField, SubmitField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 from src import db
 from src.models import User
 
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign-in')
+class NewPortForm(FlaskForm):
+    port_name = StringField("Port name", validators=[DataRequired()])
+    pirate_port = BooleanField("Pirate port", validators=[DataRequired()])
+    rice = IntegerField("Rice", validators=[DataRequired()])
+    tea = IntegerField("Tea", validators=[DataRequired()])
+    wine = IntegerField("Wine", validators=[DataRequired()])
+    spice = IntegerField("Spice", validators=[DataRequired()])
+    gold = IntegerField("Gold", validators=[DataRequired()])
+    diamonds = IntegerField("Diamonds", validators=[DataRequired()])
+    slaves = IntegerField("Slaves", validators=[DataRequired()])
+    port_register = SubmitField("Initialize a port")
+class NewCrewForm(FlaskForm):
+    crew_name = StringField("Port name", validators=[DataRequired()])
+    crew_register = SubmitField("Initialize a port")
 
 class RegistrationForm(FlaskForm):
     #username

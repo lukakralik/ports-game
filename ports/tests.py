@@ -1,5 +1,6 @@
 import os
 import unittest
+
 from src import app, db
 from src.models import User
 
