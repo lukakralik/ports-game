@@ -1,8 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <h1>The port of {{ current_user.username }} </h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+<h1 class="text-center">Home</h1>
+<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+    <a href="{{ url_for('login') }}" class="text-decoration-none">
+        <button type="submit" class="btn btn-primary btn-lg d-flex flex-column align-items-center justify-content-center" style="padding: 20px 40px;">
+            <img src="{{ url_for('static', filename='anchor.png') }}" alt="Anchor logo" style="max-width: 150px; margin: 10px 0;">
+            <h1 class="mb-0">Port login</h1>
+        </button>
+    </a>
+</div>
 {% endblock %}
