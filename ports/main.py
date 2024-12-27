@@ -2,7 +2,7 @@ import sqlalchemy as sa
 import sqlalchemy.orm as so
 
 from src import app, db
-from src.models import Port, Crew
+from src.models import Crew, Port
 
 
 @app.shell_context_processor

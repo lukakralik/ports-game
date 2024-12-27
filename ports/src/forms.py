@@ -1,10 +1,11 @@
 import sqlalchemy as sa
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, SelectField, StringField, SubmitField, IntegerField
+from wtforms import BooleanField, IntegerField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 from src import db
 from src.models import Port
+
 
 class NewPortForm(FlaskForm):
     port_name = StringField("Port name", validators=[DataRequired()])

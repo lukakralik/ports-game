@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% endwith %}
+
     <h1>New crew</h1>
     <form method="POST">
         {{ form.hidden_tag() }}
