@@ -196,4 +196,9 @@
             width: 100%;
         }
     </style>
+
+
+    <div class="fixed-bottom d-flex justify-content-center mb-3">
+        <a href="{{ url_for('port_detail', port_id=port.id, crew_id=crew.id) }}" class="btn btn-primary">Back</a>
+    </div>
 {% endblock %}

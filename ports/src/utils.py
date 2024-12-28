@@ -1,5 +1,6 @@
 from flask import flash, render_template
 
+
 def check_low_balance(crew, port, item_price):
     if crew.balance < item_price:
         flash("Insufficient funds!", "warning")
