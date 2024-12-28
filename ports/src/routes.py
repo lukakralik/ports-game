@@ -1,100 +1,168 @@
-from datetime import datetime, timezone
-from urllib.parse import urlsplit
-
-import sqlalchemy as sa
-from flask import flash, redirect, render_template, request, url_for
-from flask_login import current_user, login_required, login_user, logout_user
+from flask import flash, redirect, render_template, url_for
 
 from src import app, db
-from src.forms import EditProfileForm, LoginForm, RegistrationForm
-from src.models import User
+from src.forms import NewCrewForm, NewPortForm
+from src.models import Crew, Port
+from src.utils import *
 
 
-@app.route('/')
-@app.route('/index')
-@login_required
+@app.route("/")
+@app.route("/index")
 def index():
-    posts = [
-        {
-            'author': {'username': 'Hynek'},
-            'body': 'Kupuju zlato!'
-        },
-        {
-            'author': {'username': 'David'},
-            'body': 'Otroci jsou meta!'
-        }
-    ]
+    return render_template("index.html", title="Home")
 
-    return render_template('index.html', title='Home', posts=posts)
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route("/login")
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
+    ports = Port.query.all()
+
+    return render_template("login.html", title="Port login", ports=ports)
+
+
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    return render_template("admin/admin.html", title="Admin")
+
+
+@app.route("/admin/new_port", methods=["GET", "POST"])
+def new_port():
+    form = NewPortForm()
     if form.validate_on_submit():
-        user = db.session.scalar(
-            sa.select(User).where(User.username == form.username.data))
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or urlsplit(next_page).netloc != "":
-            next_page = url_for("index")
-        return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+        port = Port(
+            name=form.port_name.data,
+            pirate=form.pirate_port.data,
+            rice_price=form.rice.data,
+            tea_price=form.tea.data,
+            wine_price=form.wine.data,
+            spice_price=form.spice.data,
+            gold_price=form.gold.data,
+            diamonds_price=form.diamonds.data,
+            slaves_price=form.slaves.data,
+        )
+        db.session.add(port)
+        db.session.commit()
+        flash("New port has been initialized successfully.", "success")
+        return redirect(url_for("admin"))
+    return render_template("admin/new_port.html", form=form)
 
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
 
-@app.route('/register', methods=["GET", "POST"])
-def register():
-    if current_user.is_authenticated:
-        return(redirect(url_for("index")))
-    form = RegistrationForm()
+@app.route("/new_crew", methods=["GET", "POST"])
+def new_crew():
+    form = NewCrewForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password1.data)
-        db.session.add(user)
+        crew_color = form.crew_color.data
+        taken_colors = [crew.color for crew in Crew.query.all()]
+        if crew_color in taken_colors:
+            flash(
+                f'The color "{crew_color}" is already taken. Taken colors: {", ".join(taken_colors)}',
+                "danger",
+            )
+            return redirect(url_for("new_crew"))
+
+        crew = Crew(
+            name=form.crew_name.data,
+            color=form.crew_color.data,
+            max_carry=3,
+            current_carry=0,
+            balance=50,
+            rice_count=0,
+            tea_count=0,
+            wine_count=0,
+            spice_count=0,
+            gold_count=0,
+            slaves_count=0,
+            diamonds_count=0,
+        )
+        db.session.add(crew)
         db.session.commit()
-        flash("Congrats you are now registered")
-        return redirect(url_for("login"))
-    return render_template("register.html", title="Register", form=form)
 
-@app.route('/user/<username>')
-@login_required
-def user(username):
-    user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts)
+        flash("Crew added successfully!", "success")
+        return redirect(url_for("admin"))
+    return render_template("admin/new_crew.html", form=form)
 
-@app.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.now(timezone.utc)
-        db.session.commit()
 
-@app.route('/edit_profile', methods=['GET', 'POST'])
-@login_required
-def edit_profile():
-    form = EditProfileForm(current_user.username)
+@app.route("/port/<int:port_id>")
+def port_detail(port_id):
+    port = Port.query.get_or_404(port_id)
+    crews = Crew.query.all()
+    return render_template("port_detail.html", port=port, crews=crews)
 
-    if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.about_me = form.about_me.data
-        db.session.commit()
-        flash("Changes have been saved!")
-        return redirect(url_for("edit_profile"))
 
-    elif request.method == "GET":
-        form.username.data = current_user.username
-        form.about_me.data = current_user.about_me
-    return render_template("edit_profile.html", title="Edit profile", form=form)
+@app.route("/port/<int:port_id><int:crew_id>")
+def crew_operation(port_id, crew_id):
+    port = Port.query.get_or_404(port_id)
+    crew = Crew.query.get_or_404(crew_id)
+    return render_template("crew_operation.html", port=port, crew=crew)
+
+
+@app.route("/offers")
+def offers():
+    return render_template("offers.html")
+
+@app.route(
+    "/handle_transaction/<int:port_id>/<int:crew_id>/<string:item_id>/<string:action>",
+    methods=["POST"],
+)
+def handle_transaction(port_id, crew_id, item_id, action):
+    port = Port.query.get_or_404(port_id)
+    crew = Crew.query.get_or_404(crew_id)
+
+    price_mapping = {
+        "rice": port.rice_price,
+        "tea": port.tea_price,
+        "wine": port.wine_price,
+        "spice": port.spice_price,
+        "gold": port.gold_price,
+        "slaves": port.slaves_price,
+        "diamonds": port.diamonds_price,
+    }
+
+    quantity_mapping = {
+        "rice": crew.rice_count,
+        "tea": crew.tea_count,
+        "wine": crew.wine_count,
+        "spice": crew.spice_count,
+        "gold": crew.gold_count,
+        "slaves": crew.slaves_count,
+        "diamonds": crew.diamonds_count,
+    }
+
+    if item_id not in price_mapping:
+        return "Invalid item", 400
+
+    item_price = price_mapping[item_id]
+    item_count = quantity_mapping[item_id]
+
+    if action == "buy":
+        check_low_balance(crew, port, item_price)
+        check_low_carry(crew, port)
+
+        crew.balance -= item_price
+        setattr(crew, f"{item_id}_count", item_count + 1)
+        crew.current_carry += 1
+    elif action == "sell":
+        check_empty_storage(crew, port)
+
+        if item_count:
+            crew.balance += item_price
+            setattr(crew, f"{item_id}_count", item_count - 1)
+            crew.current_carry -= 1
+        else:
+            flash("Item not in storage!", "warning")
+            return render_template("crew_operation.html", crew=crew, port=port)
+
+    else:
+        render_template("errors/404.html")
+
+    db.session.commit()
+
+    flash(f"Transaction successful: {action} {item_id} for {item_price}$")
+    return render_template("crew_operation.html", crew=crew, port=port)
+
+
+@app.route("/tasks")
+def tasks():
+    return render_template("tasks.html")
+
 
 # view function mapped onto urls / and /index

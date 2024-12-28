@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% endwith %}
+
+    <h1>New crew</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.crew_name.label }}<br>
+            {{ form.crew_name }}
+        </div>
+        <br></br>
+        <div>
+            {{ form.crew_color.label }}<br>
+            {{ form.crew_color }}
+        </div>
+        <br></br>
+        <div>
+            {{ form.crew_register }}
+        </div>
+    </form>
+{% endblock %}

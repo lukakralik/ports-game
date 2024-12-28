@@ -1,4 +1,4 @@
-2024-12-25 22:42:13,973 ERROR: Exception on / [GET] [in /home/equist/.local/lib/python3.12/site-packages/flask/app.py:1414]
+2024-12-25 22:41:21,765 ERROR: Exception on / [GET] [in /home/equist/.local/lib/python3.12/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
     self.dialect.do_execute(
@@ -90,50 +90,5 @@ FROM user
 WHERE user.id = ?]
 [parameters: (5,)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-2024-12-25 22:43:26,939 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-25 22:43:56,982 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-25 22:44:49,332 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-25 22:45:06,479 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-25 22:46:48,745 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-25 22:46:57,513 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-26 21:43:29,327 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-26 21:45:15,575 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-26 21:45:21,856 ERROR: Exception on / [GET] [in /home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 28, in index
-    return render_template('index.html', title='Home', posts=posts)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/equist/Programming/ports-game/ports/src/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/equist/Programming/ports-game/ports/src/templates/base.html", line 37, in template
-    {% endif %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
-2024-12-26 21:45:32,633 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-26 23:05:07,777 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
+2024-12-25 22:42:04,504 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
+2024-12-25 22:42:10,696 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]

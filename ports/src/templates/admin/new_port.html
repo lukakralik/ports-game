@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>New port</h1>
+    <form action="" method="post">
+        {{form.hidden_tag()}}
+
+        <p>
+            {{form.port_name.label}}
+            {{form.port_name(size=16)}}
+        </p>
+
+        <p>
+            {{form.pirate_port.label}}
+            {{form.pirate_port(size=16)}}
+        </p>
+
+        <h2>Prices</h2>
+
+        <p>
+        {{form.rice.label}}
+        {{form.rice(size=4)}}
+        </p>
+
+        <p>
+        {{form.tea.label}}
+        {{form.tea(size=4)}}
+        </p>
+
+        <p>
+        {{form.wine.label}}
+        {{form.wine(size=4)}}
+        </p>
+
+        <p>
+        {{form.spice.label}}
+        {{form.spice(size=4)}}
+        </p>
+
+        <p>
+        {{form.gold.label}}
+        {{form.gold(size=4)}}
+        </p>
+
+        <p>
+        {{form.slaves.label}}
+        {{form.slaves(size=4)}}
+        </p>
+
+        <p>
+        {{form.diamonds.label}}
+        {{form.diamonds(size=4)}}
+        </p>
+
+        <br></br>
+
+        <p>{{ form.port_register() }}</p>
+    </form>
+{% endblock %}
