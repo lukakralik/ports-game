@@ -24,7 +24,7 @@ class NewCrewForm(FlaskForm):
     crew_name = StringField("Crew Name", validators=[DataRequired()])
     crew_color = SelectField(
         "Crew Color",
-        choices=[
+        choices = [
             ("red", "Red"),
             ("blue", "Blue"),
             ("green", "Green"),
@@ -33,7 +33,17 @@ class NewCrewForm(FlaskForm):
             ("white", "White"),
             ("orange", "Orange"),
             ("purple", "Purple"),
-            ("Brown", "Brown"),
+            ("brown", "Brown"),
+            ("pink", "Pink"),
+            ("cyan", "Cyan"),
+            ("gold", "Gold"),
+            ("silver", "Silver"),
+            ("lime", "Lime"),
+            ("violet", "Violet"),
+            ("teal", "Teal"),
+            ("indigo", "Indigo"),
+            ("salmon", "Salmon"),
+            ("khaki", "Khaki"),
         ],
         validators=[DataRequired()],
     )

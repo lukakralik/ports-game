@@ -43,7 +43,7 @@ def new_port():
         db.session.add(port)
         db.session.commit()
         flash('New port has been initialized successfully.', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for("admin"))
     return render_template('admin/new_port.html', form=form)
 
 @app.route('/new_crew', methods=['GET', 'POST'])
@@ -51,7 +51,6 @@ def new_crew():
     form = NewCrewForm()
     if form.validate_on_submit():
         crew_color = form.crew_color.data
-        # ensure color uniqueness
         taken_colors = [crew.color for crew in Crew.query.all()]
         if crew_color in taken_colors:
             flash(f'The color "{crew_color}" is already taken. Taken colors: {", ".join(taken_colors)}', 'danger')

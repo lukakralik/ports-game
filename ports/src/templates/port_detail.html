@@ -7,7 +7,12 @@
     <div class="d-flex flex-column align-items-center">
         {% for crew in crews %}
             <form action="{{ url_for('crew_operation', port_id=port.id, crew_id=crew.id) }}" method="GET" class="w-50 my-2">
-                <button type="submit" class="btn btn-primary w-100">{{ crew.name }}</button>
+                <button 
+                    type="submit" 
+                    class="btn w-100" 
+                    style="background-color: {{ crew.color }}; color: white;">
+                    {{ crew.name }}
+                </button>
             </form>
         {% endfor %}
     </div>
