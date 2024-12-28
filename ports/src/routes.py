@@ -81,6 +81,10 @@ def crew_operation(port_id, crew_id):
 def offers():
     return render_template('offers.html')
 
+@app.route('/handle_transaction')
+def handle_transaction():
+    pass
+
 @app.route('/tasks')
 def tasks():
     return render_template('tasks.html')
