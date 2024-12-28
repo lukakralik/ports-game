@@ -2,10 +2,8 @@
 
 {% block content %}
     <h1>Crew: {{ crew.name }}</h1>
-    <h3>In the port of: {{ port.name }}</h3>
+    <h2>In the port of: {{ port.name }}</h2>
 
-    <p>Crew balance: <strong>{{crew.balance}}$</strong></p>
-    <p>Crew storage usage: <strong>{{crew.current_carry}} / {{crew.max_carry}}</strong></p>
 
     <div class="table-container">
         <table class="table">
@@ -122,6 +120,57 @@
                         </form>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Crew details</h2>
+    <p>Crew balance: <strong>{{crew.balance}}$</strong></p>
+    <p>Crew storage usage: <strong>{{crew.current_carry}} / {{crew.max_carry}}</strong></p>
+
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rice</td>
+                    <td>{{ crew.rice_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Tea</td>
+                    <td>{{ crew.tea_count }}</td>
+                </tr>
+                <tr>
+                    <td>Wine</td>
+                    <td>{{ crew.wine_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Spice</td>
+                    <td>{{ crew.spice_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Gold</td>
+                    <td>{{ crew.gold_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Slaves</td>
+                    <td>{{ crew.slaves_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Diamonds</td>
+                    <td>{{ crew.diamonds_count }}</td>
+                </tr>
+
             </tbody>
         </table>
     </div>

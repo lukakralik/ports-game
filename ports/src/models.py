@@ -1,10 +1,3 @@
-from datetime import datetime, timezone
-from hashlib import md5
-from typing import Optional
-
-import sqlalchemy as sa
-import sqlalchemy.orm as so
-
 from src import db
 
 
@@ -20,6 +13,7 @@ class Port(db.Model):
     diamonds_price = db.Column(db.Integer, nullable=False)
     slaves_price = db.Column(db.Integer, nullable=False)
 
+
 class Crew(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True, nullable=False)
@@ -27,3 +21,11 @@ class Crew(db.Model):
     max_carry = db.Column(db.Integer, nullable=True)
     current_carry = db.Column(db.Integer, nullable=True)
     balance = db.Column(db.Integer, nullable=True)
+
+    rice_count = db.Column(db.Integer, nullable=True)
+    tea_count = db.Column(db.Integer, nullable=True)
+    wine_count = db.Column(db.Integer, nullable=True)
+    spice_count = db.Column(db.Integer, nullable=True)
+    gold_count = db.Column(db.Integer, nullable=True)
+    diamonds_count = db.Column(db.Integer, nullable=True)
+    slaves_count = db.Column(db.Integer, nullable=True)

@@ -1,10 +1,6 @@
-import sqlalchemy as sa
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, IntegerField, SelectField, StringField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
-
-from src import db
-from src.models import Port
+from wtforms.validators import DataRequired
 
 
 class NewPortForm(FlaskForm):
@@ -24,7 +20,7 @@ class NewCrewForm(FlaskForm):
     crew_name = StringField("Crew Name", validators=[DataRequired()])
     crew_color = SelectField(
         "Crew Color",
-        choices = [
+        choices=[
             ("red", "Red"),
             ("blue", "Blue"),
             ("green", "Green"),
