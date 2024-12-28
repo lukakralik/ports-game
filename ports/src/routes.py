@@ -56,7 +56,7 @@ def new_crew():
             flash(f'The color "{crew_color}" is already taken. Taken colors: {", ".join(taken_colors)}', 'danger')
             return redirect(url_for('new_crew'))
 
-        crew = Crew(name=form.crew_name.data, color=form.crew_color.data)
+        crew = Crew(name=form.crew_name.data, color=form.crew_color.data, max_carry=3, current_carry=0, balance=50)
         db.session.add(crew)
         db.session.commit()
 
@@ -81,9 +81,50 @@ def crew_operation(port_id, crew_id):
 def offers():
     return render_template('offers.html')
 
-@app.route('/handle_transaction')
-def handle_transaction():
-    pass
+@app.route('/handle_transaction/<int:port_id>/<int:crew_id>/<string:item_id>/<string:action>', methods=['POST'])
+def handle_transaction(port_id, crew_id, item_id, action):
+    port = Port.query.get_or_404(port_id)
+    crew = Crew.query.get_or_404(crew_id)
+
+    price_mapping = {
+        "rice": port.rice_price,
+        "tea": port.tea_price,
+        "wine": port.wine_price,
+        "spice": port.spice_price,
+        "gold": port.gold_price,
+        "slaves": port.slaves_price,
+        "diamonds": port.diamonds_price
+    }
+
+    if item_id not in price_mapping:
+        return "Invalid item", 400
+    
+    item_price = price_mapping[item_id]
+
+
+    if action == "buy":
+        if crew.balance < item_price:
+            flash("Insufficient funds!", "warning")
+            return render_template("crew_operation.html", crew=crew, port=port)
+
+        if crew.max_carry < crew.current_carry + 1:
+            flash("Insufficient storage!", "warning")
+            return render_template("crew_operation.html", crew=crew, port=port)
+        crew.balance -= item_price
+        crew.current_carry += 1
+    elif action == "sell":
+        if crew.current_carry == 0:
+            flash("Empty storage!", "warning")
+            return render_template("crew_operation.html", crew=crew, port=port)
+        crew.balance += item_price
+        crew.current_carry -= 1
+    else:
+        render_template("errors/404.html")
+
+    db.session.commit()
+
+    flash(f"Transaction successful: {action} {item_id} for {item_price}$")
+    return render_template("crew_operation.html", crew=crew, port=port)
 
 @app.route('/tasks')
 def tasks():

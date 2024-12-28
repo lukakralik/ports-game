@@ -1,83 +1,150 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Operations for Crew: {{ crew.name }}</h1>
-    <h3>Port: {{ port.name }}</h3>
+    <h1>Crew: {{ crew.name }}</h1>
+    <h3>In the port of: {{ port.name }}</h3>
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Rice ({{ port.rice_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='rice', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
+    <p>Crew balance: <strong>{{crew.balance}}$</strong></p>
+    <p>Crew storage usage: <strong>{{crew.current_carry}} / {{crew.max_carry}}</strong></p>
 
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='rice', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Buy</th>
+                    <th>Sell</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rice</td>
+                    <td>{{ port.rice_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='rice', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='rice', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Tea</td>
+                    <td>{{ port.tea_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='tea', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='tea', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Wine</td>
+                    <td>{{ port.wine_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='wine', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='wine', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Spice</td>
+                    <td>{{ port.spice_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='spice', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='spice', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Gold</td>
+                    <td>{{ port.gold_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='gold', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='gold', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Slaves</td>
+                    <td>{{ port.slaves_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='slaves', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='slaves', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Diamonds</td>
+                    <td>{{ port.diamonds_price }}$</td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='diamonds', action='buy') }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='diamonds', action='sell') }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Tea ({{ port.tea_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='tea', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
+    <style>
+        .table-container {
+            width: 100%;
+            margin-top: 1rem;
+        }
 
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='tea', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
-    </div>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Wine ({{ port.wine_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='wine', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
+        .table th, .table td {
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
 
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='wine', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
-    </div>
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Spice ({{ port.spice_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='spice', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
-
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='spice', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
-    </div>
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Gold ({{ port.gold_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='gold', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
-
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='gold', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
-    </div>
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Slaves ({{ port.slaves_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='slaves', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
-
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='slaves', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
-    </div>
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <span> Diamonds ({{ port.diamonds_price}}$)</span>
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='diamonds', action='buy') }}" method="POST">
-            <button type="submit" class="btn btn-success btn-sm">Buy</button>
-        </form>
-
-        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='diamonds', action='sell') }}" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm">Sell</button>
-        </form>
-    </div>
+        .btn {
+            width: 100%;
+        }
+    </style>
 {% endblock %}

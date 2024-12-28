@@ -24,3 +24,6 @@ class Crew(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True, nullable=False)
     color = db.Column(db.String(32), nullable=False)
+    max_carry = db.Column(db.Integer, nullable=True)
+    current_carry = db.Column(db.Integer, nullable=True)
+    balance = db.Column(db.Integer, nullable=True)
