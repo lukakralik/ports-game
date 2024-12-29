@@ -97,7 +97,9 @@ def crew_operation(port_id, crew_id):
 
 @app.route("/offers")
 def offers():
-    return render_template("offers.html")
+    ports = Port.query.all()
+    # best_spread = get_optimal_spread(ports)
+    return render_template("offers.html", ports=ports)
 
 @app.route(
     "/handle_transaction/<int:port_id>/<int:crew_id>/<string:item_id>/<string:action>",
@@ -141,7 +143,7 @@ def handle_transaction(port_id, crew_id, item_id, action):
         else:
             return render_template("crew_operation.html", crew=crew, port=port)
     elif action == "sell":
-        if item_count and check_empty_storage(crew):
+        if check_item_count(item_count) and check_empty_storage(crew):
             crew.balance += item_price
             setattr(crew, f"{item_id}_count", item_count - 1)
             crew.current_carry -= 1

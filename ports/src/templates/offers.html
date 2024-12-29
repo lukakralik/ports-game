@@ -2,4 +2,73 @@
 
 {% block content %}
     <h1>Offers</h1>
+    <p>Summary of all listed offers per port</p>
+
+    {% for port in ports %}
+    <h2>{{port.name}}</h2>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rice</td>
+                    <td>{{ port.rice_price }}$</td>
+                </tr>
+
+                <tr>
+                    <td>Tea</td>
+                    <td>{{ port.tea_price }}$</td>
+                </tr>
+                <tr>
+                    <td>Wine</td>
+                    <td>{{ port.wine_price }}$</td>
+                </tr>
+
+                <tr>
+                    <td>Spice</td>
+                    <td>{{ port.spice_price }}$</td>
+                </tr>
+
+                <tr>
+                    <td>Gold</td>
+                    <td>{{ port.gold_price }}$</td>
+                </tr>
+
+                <tr>
+                    <td>Slaves</td>
+                    <td>{{ port.slaves_price }}$</td>
+                </tr>
+
+                <tr>
+                    <td>Diamonds</td>
+                    <td>{{ port.diamonds_price }}$</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        .table-container {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
+    </style>
+    {% endfor %}
 {% endblock %}

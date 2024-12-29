@@ -24,3 +24,6 @@ def check_item_count(item_count):
         flash("Item not in storage!", "warning")
         return False
     return True
+
+def get_optimal_spread(ports):
+    pass
