@@ -134,21 +134,18 @@ def handle_transaction(port_id, crew_id, item_id, action):
     item_count = quantity_mapping[item_id]
 
     if action == "buy":
-        check_low_balance(crew, port, item_price)
-        check_low_carry(crew, port)
-
-        crew.balance -= item_price
-        setattr(crew, f"{item_id}_count", item_count + 1)
-        crew.current_carry += 1
+        if check_low_balance(crew, item_price) and check_low_carry(crew):
+            crew.balance -= item_price
+            setattr(crew, f"{item_id}_count", item_count + 1)
+            crew.current_carry += 1
+        else:
+            return render_template("crew_operation.html", crew=crew, port=port)
     elif action == "sell":
-        check_empty_storage(crew, port)
-
-        if item_count:
+        if item_count and check_empty_storage(crew):
             crew.balance += item_price
             setattr(crew, f"{item_id}_count", item_count - 1)
             crew.current_carry -= 1
         else:
-            flash("Item not in storage!", "warning")
             return render_template("crew_operation.html", crew=crew, port=port)
 
     else:
