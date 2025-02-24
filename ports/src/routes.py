@@ -45,6 +45,27 @@ def new_port():
         return redirect(url_for("admin"))
     return render_template("admin/new_port.html", form=form)
 
+@app.route("/list_crews", methods=["GET"])
+def list_crews():
+    crews=Crew.query.all()
+    return render_template("admin/list_crews.html", crews=crews)
+
+@app.route("/delete_crew<string:crew_name>", methods=["POST"])
+def delete_crew(crew_name):
+    queried_crew = Crew.query.filter_by(name=crew_name).first()
+    crews = Crew.query.all()
+
+    if queried_crew:
+        db.session.delete(queried_crew)
+        db.session.commit()
+        flash("Crew deleted", "success")
+        crews = Crew.query.all()
+        return render_template("admin/list_crews.html", crews=crews)
+    flash("Crew not found", "failure")
+    return render_template("admin/list_crews.html", crews=crews)
+    
+
+
 
 @app.route("/new_crew", methods=["GET", "POST"])
 def new_crew():

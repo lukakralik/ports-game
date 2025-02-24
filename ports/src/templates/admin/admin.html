@@ -9,5 +9,8 @@
     <form action="{{ url_for('new_crew') }}" method="get" class="mx-2">
         <button type="submit" class="btn btn-secondary">New Crew</button>
     </form>
+    <form action="{{ url_for('list_crews') }}" method="get" class="mx-2">
+        <button type="submit" class="btn btn-success">Active Crews</button>
+    </form>
 </div>
 {% endblock %}

@@ -1,44 +1,4 @@
-2024-12-26 23:17:33,388 ERROR: Exception on /admin/new_crew [GET] [in /home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 103, in new_crew
-    return render_template('admin/new_crew.html')
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/equist/Programming/ports-game/ports/src/templates/admin/new_crew.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/equist/Programming/ports-game/ports/src/templates/base.html", line 49, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/templates/admin/new_crew.html", line 6, in block 'content'
-    {{form.hidden_tag()}}
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/jinja2/environment.py", line 487, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2024-12-27 17:19:48,743 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:31]
-2024-12-28 21:15:49,827 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2024-12-28 21:15:52,705 ERROR: Exception on /handle_transaction/2/1/diamonds/sell [POST] [in /home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py:838]
+2024-12-28 21:15:58,172 ERROR: Exception on /port/1 [GET] [in /home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
     self.dialect.do_execute(
@@ -61,27 +21,15 @@ Traceback (most recent call last):
   File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 114, in handle_transaction
-    crew = Crew.query.get_or_404(crew_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/flask_sqlalchemy/query.py", line 30, in get_or_404
-    rv = self.get(ident)
-         ^^^^^^^^^^^^^^^
-  File "<string>", line 2, in get
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
-    return fn(*args, **kwargs)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1127, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1136, in _get_impl
-    return self.session._get_impl(
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3873, in _get_impl
-    return db_load_fn(
-           ^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
-    session.execute(
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 86, in port_detail
+    crews = Crew.query.all()
+            ^^^^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
   File "/home/equist/Programming/ports-game/ports/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
     return self._execute_internal(
            ^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +61,61 @@ Traceback (most recent call last):
     cursor.execute(statement, parameters)
 sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: crew.rice_count
 [SQL: SELECT crew.id AS crew_id, crew.name AS crew_name, crew.color AS crew_color, crew.max_carry AS crew_max_carry, crew.current_carry AS crew_current_carry, crew.balance AS crew_balance, crew.rice_count AS crew_rice_count, crew.tea_count AS crew_tea_count, crew.wine_count AS crew_wine_count, crew.spice_count AS crew_spice_count, crew.gold_count AS crew_gold_count, crew.diamonds_count AS crew_diamonds_count, crew.slaves_count AS crew_slaves_count 
-FROM crew 
-WHERE crew.id = ?]
-[parameters: (1,)]
+FROM crew]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-28 21:16:27,552 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:16:33,603 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:12,641 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:19,847 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:22,735 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:28,041 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:42,197 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:46,980 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:17:52,244 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:18:08,894 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:42:56,283 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2024-12-28 21:48:15,428 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-02-24 10:51:00,166 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-02-24 10:55:24,256 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-02-24 10:55:26,958 ERROR: Exception on /admin [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 24, in admin
+    return render_template("admin/admin.html", title="Admin")
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/equist/Programming/ports-game/ports/src/templates/admin/admin.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/equist/Programming/ports-game/ports/src/templates/base.html", line 49, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/templates/admin/admin.html", line 12, in block 'content'
+    <form action="{{ url_for('list_crews') }}" method="get" class="mx-2">
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/home/equist/.local/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'list_crews'. Did you mean 'new_crew' instead?
