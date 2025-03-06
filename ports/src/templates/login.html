@@ -6,7 +6,11 @@
     <div class="d-flex align-items-center flex-column">
         {% for port in ports %}
             <form action="/port/{{ port.id }}" method="get" class="w-50 my-2">
-                <button type="submit" class="btn btn-primary w-100">{{ port.name }}</button>
+                {% if port.pirate %}
+                    <button type="submit" class="btn btn-primary w-100">☠{{ port.name }}☠</button>
+                {% else %}
+                    <button type="submit" class="btn btn-primary w-100">{{ port.name }}</button>
+                {% endif %}
             </form>
             <br></br>
         {% endfor %}

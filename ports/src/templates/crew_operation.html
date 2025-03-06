@@ -4,6 +4,43 @@
     <h1>Crew: {{ crew.name }}</h1>
     <h2>In the port of: {{ port.name }}</h2>
 
+    {% if crew.is_pirate and port.pirate %}
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Target Crew</th>
+                        <th>Percentage</th>
+                        <th>Execute</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Steal Wealth</td>
+                        <td>
+                            <form action="{{ url_for('steal') }}" method="POST">
+                                <input type="hidden" name="crew1" value="{{ crew.name }}">
+                                <select name="crew2" class="form-select">
+                                    {% for available_crew in crews %}
+                                        {% if available_crew.name != crew.name %}
+                                            <option value="{{ available_crew.name }}">{{ available_crew.name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                        </td>
+                        <td>
+                            <input type="number" name="percentage" class="form-control" min="1" max="100" required>
+                        </td>
+                        <td>
+                                <button type="submit" class="btn btn-success btn-sm">Steal</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 
     <div class="table-container">
         <table class="table">
@@ -92,15 +129,15 @@
                 </tr>
                 
                 <tr>
-                    <td>Slaves</td>
-                    <td>{{ port.slaves_price }}$</td>
+                    <td>Canons</td>
+                    <td>{{ port.canon_price }}$</td>
                     <td>
-                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='slaves', action='buy') }}" method="POST">
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='canon', action='buy') }}" method="POST">
                             <button type="submit" class="btn btn-success btn-sm">Buy</button>
                         </form>
                     </td>
                     <td>
-                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='slaves', action='sell') }}" method="POST">
+                        <form action="{{ url_for('handle_transaction', port_id=port.id, crew_id=crew.id, item_id='canon', action='sell') }}" method="POST">
                             <button type="submit" class="btn btn-danger btn-sm">Sell</button>
                         </form>
                     </td>
@@ -162,8 +199,8 @@
                 </tr>
 
                 <tr>
-                    <td>Slaves</td>
-                    <td>{{ crew.slaves_count }}</td>
+                    <td>Canons</td>
+                    <td>{{ crew.canon_count }}</td>
                 </tr>
 
                 <tr>

@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, IntegerField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired
+from functools import cache
 
 
 class NewPortForm(FlaskForm):
@@ -12,7 +13,7 @@ class NewPortForm(FlaskForm):
     spice = IntegerField("Spice", validators=[DataRequired()])
     gold = IntegerField("Gold", validators=[DataRequired()])
     diamonds = IntegerField("Diamonds", validators=[DataRequired()])
-    slaves = IntegerField("Slaves", validators=[DataRequired()])
+    canons = IntegerField("Canons", validators=[DataRequired()])
     port_register = SubmitField("Initialize a port")
 
 

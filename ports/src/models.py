@@ -1,5 +1,10 @@
 from src import db
+from datetime import datetime
 
+class GameTimer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    end_time = db.Column(db.DateTime)
+    is_active = db.Column(db.Boolean, default=False)
 
 class Port(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,7 +16,7 @@ class Port(db.Model):
     spice_price = db.Column(db.Integer, nullable=False)
     gold_price = db.Column(db.Integer, nullable=False)
     diamonds_price = db.Column(db.Integer, nullable=False)
-    slaves_price = db.Column(db.Integer, nullable=False)
+    canon_price = db.Column(db.Integer, nullable=False)
 
 
 class Crew(db.Model):
@@ -21,6 +26,7 @@ class Crew(db.Model):
     max_carry = db.Column(db.Integer, nullable=False)
     current_carry = db.Column(db.Integer, nullable=True)
     balance = db.Column(db.Integer, nullable=True)
+    is_pirate = db.Column(db.Boolean, nullable=False)
 
     rice_count = db.Column(db.Integer, nullable=True)
     tea_count = db.Column(db.Integer, nullable=True)
@@ -28,4 +34,4 @@ class Crew(db.Model):
     spice_count = db.Column(db.Integer, nullable=True)
     gold_count = db.Column(db.Integer, nullable=True)
     diamonds_count = db.Column(db.Integer, nullable=True)
-    slaves_count = db.Column(db.Integer, nullable=True)
+    canon_count = db.Column(db.Integer, nullable=True)

@@ -11,7 +11,11 @@
                     type="submit" 
                     class="btn w-100" 
                     style="background-color: {{ crew.color }}; color: white;">
-                    {{ crew.name }}
+                    {% if crew.is_pirate %}
+                        ☠︎︎{{ crew.name }}☠
+                    {% else %}
+                        {{ crew.name }}
+                    {% endif %}
                 </button>
             </form>
         {% endfor %}
