@@ -1,7 +1,8 @@
+from functools import cache
+
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, IntegerField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired
-from functools import cache
 
 
 class NewPortForm(FlaskForm):

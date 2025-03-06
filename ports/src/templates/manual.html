@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-center">User Manual</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="mt-4">Welcome to Ports!</h2>
+            <p>
+                Ports is a strategic trading game where you manage crews, trade goods, and compete to become the most successful trader. 
+                Below is a guide to help you navigate the game.
+            </p>
+
+            <h3 class="mt-4">1. Admin Panel</h3>
+            <p>
+                The <strong>Admin Panel</strong> is where you can initialize and manage the game. Here's what you can do:
+            </p>
+            <ul>
+                <li><strong>New Port</strong>: Create new ports with unique prices for goods like rice, tea, wine, spices, gold, diamonds, and cannons.</li>
+                <li><strong>Active Ports</strong>: View and manage all active ports in the game.</li>
+                <li><strong>New Crew</strong>: Create new crews with unique names, colors, and starting balances.</li>
+                <li><strong>Active Crews</strong>: View and manage all active crews in the game.</li>
+                <li><strong>Game Timer</strong>: Start a countdown timer. When the timer ends, the game is over, and no further actions are allowed.</li>
+            </ul>
+
+            <h3 class="mt-4">2. Ports</h3>
+            <p>
+                Ports are the heart of the game. Each port has different prices for goods. Here's what you can do:
+            </p>
+            <ul>
+                <li><strong>View Port Details</strong>: Click on a port to see its prices and available goods.</li>
+                <li><strong>Trade Goods</strong>: Buy or sell goods at ports to maximize your profits.</li>
+            </ul>
+
+            <h3 class="mt-4">3. Crews</h3>
+            <p>
+                Crews represent your trading team. Each crew has a limited carrying capacity and a starting balance. Here's what you can do:
+            </p>
+            <ul>
+                <li><strong>Manage Crews</strong>: View your crew's inventory, balance, and carrying capacity.</li>
+                <li><strong>Trade Goods</strong>: Use your crew to buy and sell goods at ports.</li>
+                <li><strong>Become a Pirate</strong>: If your crew buys cannons, they become pirates and can steal from other crews.</li>
+            </ul>
+
+            <h3 class="mt-4">4. Pirates</h3>
+            <p>
+                Pirates can steal from other crews. Here's how it works:
+            </p>
+            <ul>
+                <li><strong>Steal Funds</strong>: Pirates can attack other crews and steal a percentage of their balance.</li>
+                <li><strong>Cannon Advantage</strong>: The crew with more cannons wins the battle. If both crews have the same number of cannons, the attack fails.</li>
+            </ul>
+
+            <h3 class="mt-4">5. Game Over</h3>
+            <p>
+                When the game timer ends, the game is over. A "Game Over" screen will appear, and no further actions can be taken. The winner is determined by the crew with the highest balance and most valuable inventory.
+            </p>
+
+            <div class="text-center mt-5">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

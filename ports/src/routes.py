@@ -1,10 +1,12 @@
-from flask import flash, redirect, render_template, url_for, request, g, jsonify
 from datetime import datetime, timedelta, timezone
+
+from flask import flash, g, jsonify, redirect, render_template, request, url_for
 
 from src import app, db
 from src.forms import NewCrewForm, NewPortForm
-from src.models import Crew, Port, GameTimer
+from src.models import Crew, GameTimer, Port
 from src.utils import *
+
 
 @app.before_request
 def check_game_over():
@@ -72,6 +74,10 @@ def login():
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     return render_template("admin/admin.html", title="Admin")
+
+@app.route("/manual", methods=["GET", "POST"])
+def manual():
+    return render_template("manual.html", title="Manual")
 
 
 @app.route("/admin/new_port", methods=["GET", "POST"])
