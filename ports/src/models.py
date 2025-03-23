@@ -2,11 +2,10 @@ from datetime import datetime
 
 from src import db
 
-
 class GameTimer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    start_time = db.Column(db.DateTime, default=datetime.utcnow)
     end_time = db.Column(db.DateTime)
-    is_active = db.Column(db.Boolean, default=False)
 
 class Port(db.Model):
     id = db.Column(db.Integer, primary_key=True)

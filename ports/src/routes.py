@@ -7,56 +7,49 @@ from src.forms import NewCrewForm, NewPortForm
 from src.models import Crew, GameTimer, Port
 from src.utils import *
 
-
-@app.before_request
-def check_game_over():
-    g.game_over = False
-    timer = GameTimer.query.first()
-    if timer and timer.is_active:
-        if datetime.now() >= timer.end_time:
-            timer.is_active = False
-            db.session.commit()
-            g.game_over = True
-        else:
-            g.game_over = False
-
-@app.route('/timer_status')
-def timer_status():
-    timer = GameTimer.query.first()
-    if timer and timer.is_active:
-        current_time = datetime.now()
-        if current_time >= timer.end_time:
-            timer.is_active = False
-            db.session.commit()
-            return jsonify({'seconds_left': 0, 'is_active': False})
-        remaining = timer.end_time - current_time
-        seconds_left = int(remaining.total_seconds())
-        return jsonify({'seconds_left': seconds_left, 'is_active': True})
-    return jsonify({'seconds_left': 0, 'is_active': False})
-
 @app.context_processor
-def inject_game_state():
-    return dict(game_over=g.get('game_over', False))
-
-@app.route('/admin/start_timer', methods=['POST'])
-def start_timer():
-    minutes = request.form.get('minutes', type=int)
-    if not minutes or minutes < 1:
-        flash('Invalid duration', 'danger')
-        return redirect(url_for('admin'))
-    
-    end_time = datetime.now() + timedelta(minutes=minutes)
+def inject_timer_status():
     timer = GameTimer.query.first()
     if timer:
-        timer.end_time = end_time
-        timer.is_active = True
+        now = datetime.utcnow()
+        seconds_left = int((timer.end_time - now).total_seconds())
+        game_over = seconds_left <= 0
     else:
-        timer = GameTimer(end_time=end_time, is_active=True)
-        db.session.add(timer)
-    db.session.commit()
-    flash(f'Timer set for {minutes} minutes!', 'success')
-    return redirect(url_for('admin'))
+        seconds_left = 0
+        game_over = False
+    return dict(game_over=game_over, seconds_left=seconds_left)
 
+@app.route("/start_timer", methods=["POST"])
+def start_timer():
+    minutes = request.form.get("minutes", type=int)
+    if minutes:
+        now = datetime.utcnow()
+        end_time = now + timedelta(minutes=minutes)
+        timer = GameTimer.query.first()
+        if timer:
+            timer.start_time = now
+            timer.end_time = end_time
+        else:
+            timer = GameTimer(start_time=now, end_time=end_time)
+            db.session.add(timer)
+        db.session.commit()
+        flash("Timer started!", "success")
+    else:
+        flash("Please enter a valid number of minutes.", "danger")
+    return redirect(url_for("admin"))
+
+@app.route("/timer_status")
+def timer_status():
+    timer = GameTimer.query.first()
+    if timer:
+        now = datetime.utcnow()
+        seconds_left = int((timer.end_time - now).total_seconds())
+        is_active = seconds_left > 0
+        if seconds_left < 0:
+            seconds_left = 0
+        return jsonify({"seconds_left": seconds_left, "is_active": is_active})
+    else:
+        return jsonify({"seconds_left": 0, "is_active": False})
 
 @app.route("/")
 @app.route("/index")
@@ -124,7 +117,7 @@ def delete_crew(crew_name):
         return render_template("admin/list_crews.html", crews=crews)
     flash("Crew not found", "failure")
     return render_template("admin/list_crews.html", crews=crews)
-    
+
 @app.route("/delete_port<string:port_name>", methods=["POST"])
 def delete_port(port_name):
     queried_port = Port.query.filter_by(name=port_name).first()
@@ -195,7 +188,6 @@ def crew_operation(port_id, crew_id):
 @app.route("/offers")
 def offers():
     ports = Port.query.all()
-    # best_spread = get_optimal_spread(ports)
     return render_template("offers.html", ports=ports)
 
 @app.route(
@@ -250,7 +242,7 @@ def handle_transaction(port_id, crew_id, item_id, action):
             crew.current_carry -= 1
 
             if item_id == "canon" and crew.canon_count == 1:
-                crew.is_pirate = False 
+                crew.is_pirate = False
                 db.session.commit()
         else:
             return render_template("crew_operation.html", crew=crew, port=port)
@@ -287,7 +279,7 @@ def steal():
         flash("Attacked crew has a higher number of canons!")
         return redirect(request.referrer or '/')
 
-    loot = int((crew2.balance * percentage) / 100)  # Correct percentage calculation
+    loot = int((crew2.balance * percentage) / 100)
 
     crew2.balance -= loot
     crew1.balance += loot
