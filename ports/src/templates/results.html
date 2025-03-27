@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Game Results</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Crew Name</th>
+                <th>Balance</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for crew in crews %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ crew.name }}</td>
+                <td>{{ crew.balance }}$</td>
+                <td style="background-color: {{ crew.color }}; width: 30px;"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

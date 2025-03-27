@@ -2,6 +2,7 @@ from datetime import datetime
 
 from src import db
 
+
 class GameTimer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     start_time = db.Column(db.DateTime, default=datetime.utcnow)

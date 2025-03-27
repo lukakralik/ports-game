@@ -1,19 +1,4 @@
-2025-03-23 20:50:12,717 ERROR: Exception on / [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such column: game_timer.start_time
-
-The above exception was the direct cause of the following exception:
-
+2025-03-27 19:49:25,693 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -24,104 +9,127 @@ Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 57, in index
-    return render_template("index.html", title="Home")
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 151, in render_template
-    return _render(app, template, context)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 128, in _render
-    app.update_template_context(context)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 737, in update_template_context
-    context.update(func())
-                   ~~~~^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 12, in inject_timer_status
-    timer = GameTimer.query.first()
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2754, in first
-    return self.limit(1)._iter().first()  # type: ignore
-           ~~~~~~~~~~~~~~~~~~~^^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2853, in _iter
-    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
-                                                  ~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-        params,
-        ^^^^^^^
-        execution_options={"_sa_orm_load_options": self.load_options},
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<4 lines>...
-        conn,
-        ^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
-    result = conn.execute(
-        statement, params or {}, execution_options=execution_options
-    )
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: game_timer.start_time
-[SQL: SELECT game_timer.id AS game_timer_id, game_timer.start_time AS game_timer_start_time, game_timer.end_time AS game_timer_end_time 
-FROM game_timer
- LIMIT ? OFFSET ?]
-[parameters: (1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:26,697 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:27,709 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:28,715 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:29,715 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:30,710 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:31,718 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:32,724 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    if timer:
+    
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2025-03-27 19:49:33,737 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
+    timer.end_time = timer.end_time.replace(tzinfo=timezone.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+TypeError: can't subtract offset-naive and offset-aware datetimes

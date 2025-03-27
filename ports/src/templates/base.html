@@ -36,11 +36,12 @@
                 font-size: 6rem;
             }
 
-            .game-over-overlay {
-                pointer-events: none;
+            .game-over-overlay h1 {
+                pointer-events: auto;
             }
 
-            .game-over-overlay h1 {
+
+            .game-over-overlay button {
                 pointer-events: auto;
             }
         </style>
@@ -106,9 +107,14 @@
         </nav>
 
         {% if game_over and not is_admin %}
-        <div class="game-over-overlay">
-            <h1>Game Over!</h1>
-        </div>
+            <div class="game-over-overlay">
+                <div class="text-center">
+                    <h1>Game Over!</h1>
+                    <a href="{{ url_for('results') }}" class="btn btn-primary mt-3">Ending screen</a>
+                    <br />
+                    <a href="{{ url_for('new_game') }}" class="btn btn-secondary mt-2">New game</a>
+                </div>
+            </div>
         {% endif %}
 
         <div class="container mt-3">
@@ -127,14 +133,36 @@
                     .then((data) => {
                         document.getElementById("timeRemaining").innerText =
                             data.seconds_left;
-                        // Dynamically add overlay if time is up
                         if (data.seconds_left <= 0) {
                             if (!document.querySelector(".game-over-overlay")) {
                                 let overlay = document.createElement("div");
                                 overlay.className = "game-over-overlay";
-                                overlay.innerHTML = "<h1>Game Over!</h1>";
+                                
+                                let content = document.createElement("div");
+                                content.className = "text-center";
+                                
+                                let heading = document.createElement("h1");
+                                heading.innerText = "Game Over!";
+                                
+                                let button1 = document.createElement("a");
+                                button1.href = "{{ url_for('results') }}";
+                                button1.className = "btn btn-primary mt-3";
+                                button1.innerText = "Ending screen";
+                                
+                                let button2 = document.createElement("a");
+                                button2.href = "{{ url_for('new_game') }}";
+                                button2.className = "btn btn-secondary mt-2";
+                                button2.innerText = "New game";
+                                
+                                content.appendChild(heading);
+                                content.appendChild(button1);
+                                content.appendChild(document.createElement("br"));
+                                content.appendChild(button2);
+                                
+                                overlay.appendChild(content);
                                 document.body.appendChild(overlay);
                             }
+
                         }
                     })
                     .catch((err) =>

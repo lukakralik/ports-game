@@ -28,7 +28,6 @@ class NewCrewForm(FlaskForm):
             ("green", "Green"),
             ("yellow", "Yellow"),
             ("black", "Black"),
-            ("white", "White"),
             ("orange", "Orange"),
             ("purple", "Purple"),
             ("brown", "Brown"),

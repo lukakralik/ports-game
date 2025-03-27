@@ -11,7 +11,9 @@ from src.utils import *
 def inject_timer_status():
     timer = GameTimer.query.first()
     if timer:
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
+        if timer.end_time.tzinfo is None:
+            timer.end_time = timer.end_time.replace(tzinfo=timezone.utc)
         seconds_left = int((timer.end_time - now).total_seconds())
         game_over = seconds_left <= 0
     else:
@@ -23,7 +25,7 @@ def inject_timer_status():
 def start_timer():
     minutes = request.form.get("minutes", type=int)
     if minutes:
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         end_time = now + timedelta(minutes=minutes)
         timer = GameTimer.query.first()
         if timer:
@@ -42,7 +44,9 @@ def start_timer():
 def timer_status():
     timer = GameTimer.query.first()
     if timer:
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
+        if timer.end_time.tzinfo is None:
+            timer.end_time = timer.end_time.replace(tzinfo=timezone.utc)
         seconds_left = int((timer.end_time - now).total_seconds())
         is_active = seconds_left > 0
         if seconds_left < 0:
@@ -71,6 +75,26 @@ def admin():
 @app.route("/manual", methods=["GET", "POST"])
 def manual():
     return render_template("manual.html", title="Manual")
+
+@app.route("/results", methods=["GET", "POST"])
+def results():
+    timer = GameTimer.query.first()
+    if timer:
+        timer.end_time = datetime.now(timezone.utc) + timedelta(hours=1)
+        db.session.commit()
+    flash("Game over reset!", "success")
+
+    crews = Crew.query.order_by(Crew.balance.desc()).all()
+    return render_template("results.html", title="Results", crews=crews)
+
+@app.route("/new_game", methods=["GET", "POST"])
+def new_game():
+    timer = GameTimer.query.first()
+    if timer:
+        timer.end_time = datetime.now(timezone.utc) + timedelta(hours=1)
+        db.session.commit()
+    flash("New game started!", "success")
+    return render_template("index.html")
 
 
 @app.route("/admin/new_port", methods=["GET", "POST"])
@@ -127,7 +151,7 @@ def delete_port(port_name):
         db.session.delete(queried_port)
         db.session.commit()
         flash("Port deleted", "success")
-        ports = Crew.query.all()
+        ports = Port.query.all()
         return render_template("admin/list_ports.html", ports=ports)
     flash("Port not found", "failure")
     return render_template("admin/list_ports.html", ports=ports)
