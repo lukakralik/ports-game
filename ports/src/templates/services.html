@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Service offer</h1>
+    <h2>Loan</h2>
+    <p>Crews are permitted to take out loans. Loan size, interest rate and maturity time is completely determined by the port operator.
+    This implies the operator needs to keep a track of time with a separate timer. Debt repayment is facilitated through "Arbitrary transfer".
+    Unpaid debt at the end of the game results in instant bankrupcy of the given crew.</p>
+    
+    <h2>Capacity increase</h2>
+    <p>All crews start the game with the default storage size of 3 items. This number can be increased up to 5. Upgrade price is determined by the operator.</p>
+    
+    <h2>Safe deposit</h2>
+    <p>At any point of the game all of the crews are allowed to deposit some portion of their balance to the bank.</p>
+    
+    <h2>Arbitrary transfer</h2>
+    <form method="POST" action="{{ url_for('services') }}">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Crew name</th>
+                    <th>Amount</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="give_crew" id="give_crew" class="form-control">
+                            {% for crew in crews %}
+                                <option value="{{ crew.name }}">{{ crew.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td><input type="number" name="give_amount" class="form-control"></td>
+                    <td>
+                        <button type="submit" name="action" value="give" class="btn btn-primary">Give</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="take_crew" id="take_crew" class="form-control">
+                            {% for crew in crews %}
+                                <option value="{{ crew.name }}">{{ crew.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td><input type="number" name="take_amount" class="form-control"></td>
+                    <td>
+                        <button type="submit" name="action" value="take" class="btn btn-primary">Take</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

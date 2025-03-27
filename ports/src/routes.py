@@ -7,6 +7,7 @@ from src.forms import NewCrewForm, NewPortForm
 from src.models import Crew, GameTimer, Port
 from src.utils import *
 
+
 @app.context_processor
 def inject_timer_status():
     timer = GameTimer.query.first()
@@ -96,6 +97,36 @@ def new_game():
     flash("New game started!", "success")
     return render_template("index.html")
 
+@app.route("/services", methods=["GET", "POST"])
+def services():
+    crews = Crew.query.all()
+    
+    if request.method == "POST":
+        action = request.form.get('action')
+        
+        if action == "give":
+            crew_name = request.form.get('give_crew')
+            amount = int(request.form.get('give_amount'))
+
+            crew = Crew.query.filter_by(name=crew_name).first()
+            crew.balance += amount
+            db.session.commit()
+
+            flash(f"Given {amount} to {crew_name}", "success")
+            
+        elif action == "take":
+            crew_name = request.form.get('take_crew')
+            amount = int(request.form.get('take_amount'))
+
+            crew = Crew.query.filter_by(name=crew_name).first()
+            crew.balance -= amount
+            db.session.commit()
+
+            flash(f"Taken {amount} from {crew_name}", "success")
+            
+        return redirect(url_for('services'))
+    
+    return render_template("services.html", crews=crews)
 
 @app.route("/admin/new_port", methods=["GET", "POST"])
 def new_port():

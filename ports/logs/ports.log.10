@@ -1,4 +1,4 @@
-2025-03-27 19:45:57,588 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:46:16,743 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -13,7 +13,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:45:58,589 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:46:17,746 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -28,7 +28,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:45:59,611 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:46:18,746 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -43,7 +43,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:46:00,611 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:46:19,764 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,7 +58,8 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:46:01,635 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:47:29,688 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 19:47:30,353 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -73,7 +74,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:46:02,629 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:47:31,338 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,7 +89,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:46:03,662 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:47:32,344 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -103,22 +104,8 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:46:04,663 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    seconds_left = int((timer.end_time - now).total_seconds())
-                        ~~~~~~~~~~~~~~~^~~~~
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:46:05,663 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:48:30,103 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 19:48:30,493 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
