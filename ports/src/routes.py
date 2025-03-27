@@ -7,7 +7,6 @@ from src.forms import NewCrewForm, NewPortForm
 from src.models import Crew, GameTimer, Port
 from src.utils import *
 
-
 @app.context_processor
 def inject_timer_status():
     timer = GameTimer.query.first()
@@ -15,12 +14,15 @@ def inject_timer_status():
         now = datetime.now(timezone.utc)
         if timer.end_time.tzinfo is None:
             timer.end_time = timer.end_time.replace(tzinfo=timezone.utc)
+        
         seconds_left = int((timer.end_time - now).total_seconds())
+        
         game_over = seconds_left <= 0
     else:
-        seconds_left = 0
+        seconds_left = 1000
         game_over = False
-    return dict(game_over=game_over, seconds_left=seconds_left)
+    
+    return dict(game_over=game_over, seconds_left=max(0, seconds_left))
 
 @app.route("/start_timer", methods=["POST"])
 def start_timer():
@@ -54,7 +56,7 @@ def timer_status():
             seconds_left = 0
         return jsonify({"seconds_left": seconds_left, "is_active": is_active})
     else:
-        return jsonify({"seconds_left": 0, "is_active": False})
+        return jsonify({"seconds_left": 1000, "is_active": False})
 
 @app.route("/")
 @app.route("/index")
@@ -84,9 +86,8 @@ def results():
         timer.end_time = datetime.now(timezone.utc) + timedelta(hours=1)
         db.session.commit()
     flash("Game over reset!", "success")
-
     crews = Crew.query.order_by(Crew.balance.desc()).all()
-    return render_template("results.html", title="Results", crews=crews)
+    return render_template("results.html", title="Results", crews=crews, game_over=False)
 
 @app.route("/new_game", methods=["GET", "POST"])
 def new_game():
@@ -95,7 +96,7 @@ def new_game():
         timer.end_time = datetime.now(timezone.utc) + timedelta(hours=1)
         db.session.commit()
     flash("New game started!", "success")
-    return render_template("index.html")
+    return render_template("index.html", game_over=False)
 
 @app.route("/services", methods=["GET", "POST"])
 def services():
@@ -107,22 +108,49 @@ def services():
         if action == "give":
             crew_name = request.form.get('give_crew')
             amount = int(request.form.get('give_amount'))
-
             crew = Crew.query.filter_by(name=crew_name).first()
-            crew.balance += amount
-            db.session.commit()
-
-            flash(f"Given {amount} to {crew_name}", "success")
+            if crew:
+                crew.balance += amount
+                db.session.commit()
+                flash(f"Given {amount} to {crew_name}", "success")
             
         elif action == "take":
             crew_name = request.form.get('take_crew')
             amount = int(request.form.get('take_amount'))
-
             crew = Crew.query.filter_by(name=crew_name).first()
-            crew.balance -= amount
-            db.session.commit()
-
-            flash(f"Taken {amount} from {crew_name}", "success")
+            if crew:
+                crew.balance -= amount
+                db.session.commit()
+                flash(f"Taken {amount} from {crew_name}", "success")
+                
+        elif action == "take_loan":
+            crew_name = request.form.get('loan_crew')
+            amount = int(request.form.get('loan_amount'))
+            interest_rate = int(request.form.get('interest_rate'))
+            
+            crew = Crew.query.filter_by(name=crew_name).first()
+            if crew:
+                total_debt = amount + (amount * interest_rate // 100)
+                crew.debt += total_debt
+                crew.balance += amount
+                db.session.commit()
+                flash(f"Loan of {amount} given to {crew_name} with {interest_rate}% interest (Total debt: {total_debt})", "success")
+                
+        elif action == "repay_loan":
+            crew_name = request.form.get('repay_crew')
+            repay_amount = int(request.form.get('repay_amount'))
+            
+            crew = Crew.query.filter_by(name=crew_name).first()
+            if crew:
+                if repay_amount > crew.debt:
+                    flash("Repayment amount exceeds debt!", "danger")
+                elif repay_amount > crew.balance:
+                    flash("Crew doesn't have enough balance to repay!", "danger")
+                else:
+                    crew.debt -= repay_amount
+                    crew.balance -= repay_amount
+                    db.session.commit()
+                    flash(f"Repaid {repay_amount} of {crew_name}'s debt. Remaining debt: {crew.debt}", "success")
             
         return redirect(url_for('services'))
     
@@ -216,6 +244,8 @@ def new_crew():
             canon_count=0,
             diamonds_count=0,
             is_pirate=False,
+            debt=0,
+            in_bank=0,
         )
         db.session.add(crew)
         db.session.commit()

@@ -1,4 +1,4 @@
-2025-03-27 19:48:58,618 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:07,646 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -13,7 +13,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:48:59,608 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:08,641 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -28,7 +28,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:00,601 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:09,672 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -43,7 +43,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:01,617 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:10,671 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,7 +58,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:02,616 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:11,671 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -73,7 +73,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:03,635 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:12,673 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,7 +88,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:04,636 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:13,678 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -103,7 +103,7 @@ Traceback (most recent call last):
     seconds_left = int((timer.end_time - now).total_seconds())
                         ~~~~~~~~~~~~~~~^~~~~
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:05,638 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:14,678 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -115,10 +115,10 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    seconds_left = int((timer.end_time - now).total_seconds())
-                        ~~~~~~~~~~~~~~~^~~~~
+    if timer:
+    
 TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:06,636 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 19:49:15,677 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -130,6 +130,6 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    seconds_left = int((timer.end_time - now).total_seconds())
-                        ~~~~~~~~~~~~~~~^~~~~
+    if timer:
+    
 TypeError: can't subtract offset-naive and offset-aware datetimes

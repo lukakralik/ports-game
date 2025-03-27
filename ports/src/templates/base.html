@@ -133,14 +133,23 @@
             endblock %}
         </div>
 
+
+
         {% if not is_admin %}
         <script>
             function updateTimer() {
                 fetch('{{ url_for("timer_status") }}')
                     .then((response) => response.json())
                     .then((data) => {
-                        document.getElementById("timeRemaining").innerText =
-                            data.seconds_left;
+                        document.getElementById("timeRemaining").innerText = data.seconds_left;
+                        
+                        if (data.is_active) {
+                            const overlay = document.querySelector(".game-over-overlay");
+                            if (overlay) {
+                                overlay.remove();
+                            }
+                        } 
+                        
                         if (data.seconds_left <= 0) {
                             if (!document.querySelector(".game-over-overlay")) {
                                 let overlay = document.createElement("div");
@@ -170,7 +179,6 @@
                                 overlay.appendChild(content);
                                 document.body.appendChild(overlay);
                             }
-
                         }
                     })
                     .catch((err) =>
@@ -181,6 +189,7 @@
             updateTimer();
         </script>
         {% endif %}
+
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

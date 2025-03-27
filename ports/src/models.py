@@ -29,6 +29,8 @@ class Crew(db.Model):
     current_carry = db.Column(db.Integer, nullable=True)
     balance = db.Column(db.Integer, nullable=True)
     is_pirate = db.Column(db.Boolean, nullable=False)
+    in_bank = db.Column(db.Integer, nullable=True)
+    debt = db.Column(db.Integer, nullable=True)
 
     rice_count = db.Column(db.Integer, nullable=True)
     tea_count = db.Column(db.Integer, nullable=True)
