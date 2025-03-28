@@ -52,8 +52,29 @@
     </div>
     
     <h2>Capacity increase</h2>
-    <p>All crews start the game with the default storage size of 3 items. This number can be increased up to 5. Upgrade price is determined by the operator.</p>
-    
+    <p class="mt-2">All crews start the game with the default storage size of 3 items. This number can be increased up to 5. Upgrade price is determined by the operator.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" action="{{ url_for('services') }}">
+                <div class="form-group">
+                    <label for="capacity_crew">Crew</label>
+                    <select name="capacity_crew" id="capacity_crew" class="form-control">
+                        {% for crew in crews %}
+                            <option value="{{ crew.name }}" data-capacity="{{ crew.max_carry }}">
+                                {{ crew.name }} (Current capacity: {{ crew.max_carry }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="capacity_price">Upgrade Price</label>
+                    <input type="number" name="capacity_price" id="capacity_price" class="form-control" required>
+                </div>
+                <button type="submit" name="action" value="increase_capacity" class="btn btn-primary">Increase Capacity</button>
+            </form>
+        </div>
+    </div>
+        
     <h2>Arbitrary transfer</h2>
     <form method="POST" action="{{ url_for('services') }}">
         <table class="table">

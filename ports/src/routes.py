@@ -151,6 +151,23 @@ def services():
                     crew.balance -= repay_amount
                     db.session.commit()
                     flash(f"Repaid {repay_amount} of {crew_name}'s debt. Remaining debt: {crew.debt}", "success")
+                
+        elif action == "increase_capacity":
+            crew_name = request.form.get('capacity_crew')
+            price = int(request.form.get('capacity_price'))
+            
+            crew = Crew.query.filter_by(name=crew_name).first()
+            if crew:
+                if crew.max_carry >= 5:
+                    flash(f"{crew_name} already has maximum capacity (5)", "danger")
+                elif price > crew.balance:
+                    flash(f"{crew_name} doesn't have enough balance to pay {price}$", "danger")
+                else:
+                    crew.max_carry += 1
+                    crew.balance -= price
+                    db.session.commit()
+                    flash(f"Increased {crew_name}'s capacity to {crew.max_carry} for {price}$", "success")
+            
             
         return redirect(url_for('services'))
     
