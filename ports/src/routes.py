@@ -7,6 +7,7 @@ from src.forms import NewCrewForm, NewPortForm
 from src.models import Crew, GameTimer, Port
 from src.utils import *
 
+
 @app.context_processor
 def inject_timer_status():
     timer = GameTimer.query.first()
