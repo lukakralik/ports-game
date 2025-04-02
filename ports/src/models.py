@@ -31,6 +31,7 @@ class Crew(db.Model):
     is_pirate = db.Column(db.Boolean, nullable=False)
     in_bank = db.Column(db.Integer, nullable=True)
     debt = db.Column(db.Integer, nullable=True)
+    last_visited = db.Column(db.String(64), nullable=True)
 
     rice_count = db.Column(db.Integer, nullable=True)
     tea_count = db.Column(db.Integer, nullable=True)

@@ -1,130 +1,137 @@
-2025-03-27 21:53:15,492 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:56:49,087 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:58:25,196 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:01:27,340 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:12:00,387 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:12:08,130 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:14:11,081 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:16:59,934 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:18:24,406 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:23:50,115 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:24:08,567 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 22:25:56,271 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-04-02 11:22:20,026 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:24:34,851 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:25:10,220 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:26:03,731 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:26:36,310 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:26:50,113 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 134, in services
-    crew.debt += total_debt
-TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
-2025-03-27 22:27:00,291 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-28 16:43:53,717 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 134, in services
-    total_debt = amount + (amount * interest_rate // 100)
-    ^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
-2025-03-28 16:45:18,572 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 134, in services
-    total_debt = amount + (amount * interest_rate // 100)
-    ^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
-2025-03-28 17:04:04,057 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 134, in services
-    if amount == None:
-TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
-2025-03-28 17:04:12,954 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 134, in services
-    if amount == None:
-TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
-2025-03-28 17:04:25,528 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-28 17:04:34,271 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 137, in services
-    crew.debt += total_debt
-TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
-2025-03-28 17:05:04,891 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-28 17:14:00,950 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-28 17:15:01,495 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-28 17:15:56,330 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-30 15:19:37,845 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-31 23:00:51,007 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-31 23:01:52,766 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-31 23:20:13,972 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-04-02 10:05:07,291 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-04-02 10:21:27,222 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-04-02 11:04:39,944 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:38]
-2025-04-02 11:04:40,665 ERROR: Exception on /timer_status [GET] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 878, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1253, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1440, in _setup_server
-    _validate.validate_layout(self.layout, self._layout_value())
-    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/equist/.venv/lib/python3.13/site-packages/dash/_validate.py", line 418, in validate_layout
-    raise exceptions.NoLayoutException(
-    ...<5 lines>...
-    )
-dash.exceptions.NoLayoutException: The layout was `None` at the time that `run` was called.
-Make sure to set the `layout` attribute of your application
-before running the server.
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:52,068 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:54,071 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:56,103 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:58,086 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:27:00,118 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"

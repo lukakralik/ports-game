@@ -83,7 +83,12 @@ def manual():
 @app.route("/sorted_crews")
 def get_crews():
     crews = Crew.query.order_by(Crew.balance.desc()).all()
-    return jsonify([{"name": c.name, "balance": c.balance, "color": c.color} for c in crews])
+    return jsonify([{
+        "name": c.name,
+        "balance": c.balance,
+        "color": c.color,
+        "last_visited": c.last_visited
+    } for c in crews])
 
 
 @app.route("/results", methods=["GET", "POST"])
@@ -269,6 +274,7 @@ def new_crew():
             is_pirate=False,
             debt=0,
             in_bank=0,
+            last_visited="",
         )
         db.session.add(crew)
         db.session.commit()
@@ -289,6 +295,8 @@ def port_detail(port_id):
 def crew_operation(port_id, crew_id):
     port = Port.query.get_or_404(port_id)
     crew = Crew.query.get_or_404(crew_id)
+    crew.last_visited = port.name
+    db.session.commit()
     crews = Crew.query.all()
     return render_template("crew_operation.html", port=port, crew=crew, crews=crews)
 

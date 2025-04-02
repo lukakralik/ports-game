@@ -9,6 +9,7 @@
                 <th>Rank</th>
                 <th>Crew Name</th>
                 <th>Balance</th>
+                <th>Last visited</th>
                 <th>Color</th>
             </tr>
         </thead>
@@ -18,7 +19,8 @@
                 <td>{{ loop.index }}</td>
                 <td>{{ crew.name }}</td>
                 <td>{{ crew.balance }}$</td>
-                <td style="background-color: {{ crew.color }}; width: 30px;"></td>
+                <td>{{ crew.last_visited }}</td>
+                <td style="background-color: {{ crew.color }};"></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -45,26 +47,23 @@
                 let row = nameToRow[crew.name];
 
                 if (!row) {
-                    // New crew (unlikely but handled)
                     row = document.createElement("tr");
                     row.dataset.name = crew.name;
                     row.innerHTML = `<td></td><td></td><td></td><td></td>`;
                     tbody.appendChild(row);
                 }
 
-                // Update row contents
                 row.children[0].textContent = index + 1;
                 row.children[1].textContent = crew.name;
                 row.children[2].textContent = `${crew.balance}$`;
-                row.children[3].style.backgroundColor = crew.color;
+                row.children[3].textContent = crew.last_visited;
+                row.children[4].style.backgroundColor = crew.color;
             });
 
-            // Animate reordering
             tbody.innerHTML = "";
             crews.forEach(crew => tbody.appendChild(nameToRow[crew.name]));
         }
 
-        // Poll every 2 seconds
-        setInterval(fetchCrews, 2000);
+        setInterval(fetchCrews, 1000);
     </script>
 {% endblock %}
