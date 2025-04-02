@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Game Results</h1>
+    <h1>Standings</h1>
     
-    <table class="table">
+    <table class="table" id="crew-table">
         <thead>
             <tr>
                 <th>Rank</th>
@@ -12,9 +12,9 @@
                 <th>Color</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="crew-body">
             {% for crew in crews %}
-            <tr>
+            <tr data-name="{{ crew.name }}">
                 <td>{{ loop.index }}</td>
                 <td>{{ crew.name }}</td>
                 <td>{{ crew.balance }}$</td>
@@ -23,4 +23,48 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        async function fetchCrews() {
+            const response = await fetch("/sorted_crews");
+            const crews = await response.json();
+            updateTable(crews);
+        }
+
+        function updateTable(crews) {
+            const tbody = document.getElementById("crew-body");
+            const existingRows = Array.from(tbody.children);
+            const nameToRow = {};
+
+            existingRows.forEach(row => {
+                const name = row.dataset.name;
+                nameToRow[name] = row;
+            });
+
+            crews.forEach((crew, index) => {
+                let row = nameToRow[crew.name];
+
+                if (!row) {
+                    // New crew (unlikely but handled)
+                    row = document.createElement("tr");
+                    row.dataset.name = crew.name;
+                    row.innerHTML = `<td></td><td></td><td></td><td></td>`;
+                    tbody.appendChild(row);
+                }
+
+                // Update row contents
+                row.children[0].textContent = index + 1;
+                row.children[1].textContent = crew.name;
+                row.children[2].textContent = `${crew.balance}$`;
+                row.children[3].style.backgroundColor = crew.color;
+            });
+
+            // Animate reordering
+            tbody.innerHTML = "";
+            crews.forEach(crew => tbody.appendChild(nameToRow[crew.name]));
+        }
+
+        // Poll every 2 seconds
+        setInterval(fetchCrews, 2000);
+    </script>
 {% endblock %}

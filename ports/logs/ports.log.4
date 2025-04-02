@@ -1,4 +1,4 @@
-2025-03-27 19:49:25,693 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-03-27 20:46:56,318 ERROR: Exception on /start_timer [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -9,11 +9,15 @@ Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:26,697 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 30, in start_timer
+    end_time = now + timedelta(minutes=minutes)
+               ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OverflowError: date value out of range
+2025-03-27 20:49:12,764 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:01:05,303 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:06:37,172 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:10:47,782 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:10:51,834 ERROR: Exception on /services [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -24,11 +28,30 @@ Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:27,709 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 102, in services
+    return render_template("services.html")
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/equist/Programming/ports-game/ports/src/templates/services.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/equist/Programming/ports-game/ports/src/templates/base.html", line 132, in top-level template code
+    {% endfor %} {% endif %} {% endwith %} {% block content %}{%
+    ^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/templates/services.html", line 32, in block 'content'
+    <td>{{ crew.name }}</td>
+    ^^^^^^^^^
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'crew' is undefined
+2025-03-27 21:11:48,479 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:11:50,481 ERROR: Exception on /services [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -39,11 +62,35 @@ Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:28,715 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 102, in services
+    return render_template("services.html")
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/equist/.local/lib/python3.13/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/equist/Programming/ports-game/ports/src/templates/services.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/equist/Programming/ports-game/ports/src/templates/base.html", line 132, in top-level template code
+    {% endfor %} {% endif %} {% endwith %} {% block content %}{%
+    ^^^^^^^^^^^^^
+  File "/home/equist/Programming/ports-game/ports/src/templates/services.html", line 34, in block 'content'
+    <td style="background-color: {{ crew.color }}; width: 30px;"></td>
+    ^^^^^^^^^
+  File "/home/equist/.local/lib/python3.13/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'crew' is undefined
+2025-03-27 21:12:23,618 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:14:46,904 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:15:28,090 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:16:31,189 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:29:43,904 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:31:39,774 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:31:45,842 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -54,11 +101,12 @@ Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:29,715 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 111, in services
+    crew = crew.query.filter_by(name=crew_name)
+           ^^^^
+UnboundLocalError: cannot access local variable 'crew' where it is not associated with a value
+2025-03-27 21:32:18,312 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+2025-03-27 21:32:21,253 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -69,67 +117,7 @@ Traceback (most recent call last):
   File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:30,710 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:31,718 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:32,724 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    if timer:
-    
-TypeError: can't subtract offset-naive and offset-aware datetimes
-2025-03-27 19:49:33,737 ERROR: Exception on /timer_status [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 47, in timer_status
-    timer.end_time = timer.end_time.replace(tzinfo=timezone.utc)
-                    ^^^^^^^^^^^^^^^^^^^^
-TypeError: can't subtract offset-naive and offset-aware datetimes
+  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 111, in services
+    crew = crew.query.filter_by(name=crew_name).first()
+           ^^^^
+UnboundLocalError: cannot access local variable 'crew' where it is not associated with a value

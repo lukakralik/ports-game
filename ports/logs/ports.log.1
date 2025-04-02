@@ -1,168 +1,137 @@
-2025-03-27 21:32:22,900 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
+2025-04-02 11:22:20,026 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:24:34,851 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:25:10,220 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:26:03,731 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:26:36,310 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:39]
+2025-04-02 11:26:50,113 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 111, in services
-    crew = crew.query.filter_by(name=crew_name).first()
-           ^^^^
-UnboundLocalError: cannot access local variable 'crew' where it is not associated with a value
-2025-03-27 21:32:28,676 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 111, in services
-    crew = crew.query.filter_by(name=crew_name).first()
-           ^^^^
-UnboundLocalError: cannot access local variable 'crew' where it is not associated with a value
-2025-03-27 21:32:40,600 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:32:43,776 ERROR: Exception on /services [POST] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 112, in services
-    crew.balance += amount
-TypeError: unsupported operand type(s) for +=: 'int' and 'str'
-2025-03-27 21:33:12,849 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:50:22,819 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:50:33,162 ERROR: Exception on /services [GET] [in /home/equist/.local/lib/python3.13/site-packages/flask/app.py:1414]
-Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such column: crew.in_bank
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 2190, in wsgi_app
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1486, in full_dispatch_request
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1484, in full_dispatch_request
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/equist/.local/lib/python3.13/site-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/home/equist/Programming/ports-game/ports/src/routes.py", line 102, in services
-    crews = Crew.query.all()
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2699, in all
-    return self._iter().all()  # type: ignore
-           ~~~~~~~~~~^^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2853, in _iter
-    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
-                                                  ~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-        params,
-        ^^^^^^^
-        execution_options={"_sa_orm_load_options": self.load_options},
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<4 lines>...
-        conn,
-        ^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
-    result = conn.execute(
-        statement, params or {}, execution_options=execution_options
-    )
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/equist/.local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: crew.in_bank
-[SQL: SELECT crew.id AS crew_id, crew.name AS crew_name, crew.color AS crew_color, crew.max_carry AS crew_max_carry, crew.current_carry AS crew_current_carry, crew.balance AS crew_balance, crew.is_pirate AS crew_is_pirate, crew.in_bank AS crew_in_bank, crew.debt AS crew_debt, crew.rice_count AS crew_rice_count, crew.tea_count AS crew_tea_count, crew.wine_count AS crew_wine_count, crew.spice_count AS crew_spice_count, crew.gold_count AS crew_gold_count, crew.diamonds_count AS crew_diamonds_count, crew.canon_count AS crew_canon_count 
-FROM crew]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-03-27 21:51:31,891 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:51:36,925 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:52:51,774 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:53:01,890 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:53:05,734 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
-2025-03-27 21:53:10,232 INFO: Ports game [in /home/equist/Programming/ports-game/ports/src/__init__.py:34]
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:52,068 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:54,071 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:56,103 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:26:58,086 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"
+2025-04-02 11:27:00,118 ERROR: Exception on /dashboard/_dash-update-component [POST] [in /home/equist/.venv/lib/python3.13/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1326, in dispatch
+    cb = self.callback_map[output]
+         ~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'balance-chart.figure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/equist/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/equist/.venv/lib/python3.13/site-packages/dash/dash.py", line 1400, in dispatch
+    raise KeyError(msg) from missing_callback_function
+KeyError: "Callback function not found for output 'balance-chart.figure', perhaps you forgot to prepend the '@'?"

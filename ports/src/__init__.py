@@ -3,20 +3,15 @@ import os
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask
-
-# from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-
 from config import Config
 
 app = Flask(__name__)
-# login = LoginManager(app)
 app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-# login = LoginManager(app)
-# login.login_view='login' # url_for()
 
 if not app.debug:
     if not os.path.exists("logs"):
@@ -33,5 +28,4 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info("Ports game")
 
-
-from src import errors, models, routes
+from src import errors, models, routes 

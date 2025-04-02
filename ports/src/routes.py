@@ -80,13 +80,18 @@ def admin():
 def manual():
     return render_template("manual.html", title="Manual")
 
+@app.route("/sorted_crews")
+def get_crews():
+    crews = Crew.query.order_by(Crew.balance.desc()).all()
+    return jsonify([{"name": c.name, "balance": c.balance, "color": c.color} for c in crews])
+
+
 @app.route("/results", methods=["GET", "POST"])
 def results():
     timer = GameTimer.query.first()
     if timer:
         timer.end_time = datetime.now(timezone.utc) + timedelta(hours=1)
         db.session.commit()
-    flash("Game over reset!", "success")
     crews = Crew.query.order_by(Crew.balance.desc()).all()
     return render_template("results.html", title="Results", crews=crews, game_over=False)
 
@@ -292,6 +297,10 @@ def crew_operation(port_id, crew_id):
 def offers():
     ports = Port.query.all()
     return render_template("offers.html", ports=ports)
+
+@app.route('/dashboard')
+def dashboard_redirect():
+    return redirect('/dashboard/')
 
 @app.route(
     "/handle_transaction/<int:port_id>/<int:crew_id>/<string:item_id>/<string:action>",
